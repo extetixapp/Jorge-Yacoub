@@ -1,34 +1,66 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { InlineWidget } from 'react-calendly'; // Podés instalarlo con `npm install react-calendly`
+import { Suspense, useEffect } from 'react';
 
-export default function ReservaPage() {
+function ReservaContent() {
   const searchParams = useSearchParams();
-  const servicio = searchParams.get('servicio') || 'Consulta General';
+  const servicio = searchParams.get('servicio') || 'Consulta';
+
+  useEffect(() => {
+    // 1. Cargar el script de Calendly
+    const script = document.createElement('script');
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    // 2. Escuchar el evento de reserva exitosa para redirigir sin fricción
+    const handleCalendlyEvent = (e: any) => {
+      if (e.data.event && e.data.event.indexOf('calendly.event_scheduled') === 0) {
+        window.location.href = '/'; // Redirige al inicio tras agendar
+      }
+    };
+
+    window.addEventListener('message', handleCalendlyEvent);
+
+    // 3. Limpieza al desmontar el componente
+    return () => {
+      document.body.removeChild(script);
+      window.removeEventListener('message', handleCalendlyEvent);
+    };
+  }, []);
 
   return (
-    <main className="min-h-screen bg-gray-50 py-12 px-6">
-      <div className="max-w-2xl mx-auto bg-white p-8 shadow-sm">
-        <h1 className="text-2xl font-light text-medicoAzul mb-2 uppercase">
-          Agendar: {servicio}
-        </h1>
-        <p className="text-gray-500 mb-8">
-          Por favor, completá tus datos para confirmar el turno.
-        </p>
+    <main className="min-h-screen bg-gray-50 py-8 px-4 flex flex-col items-center">
+      
+      {/* FICHA CONTENEDORA */}
+      <div className="w-full max-w-lg bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+        
+        {/* CABECERA DE LA FICHA */}
+        <div className="p-6 border-b border-gray-50">
+          <h2 className="text-xs text-medicoTeal uppercase tracking-[0.2em] mb-1">
+            Agenda tu turno
+          </h2>
+          <h1 className="font-serif text-2xl text-medicoAzul">
+            {servicio}
+          </h1>
+        </div>
 
-        {/* Aquí Calendly carga en la página */}
-        <InlineWidget
-          url="https://calendly.com/sinergiapspcoaching/30min"
-          pageSettings={{
-            backgroundColor: 'ffffff',
-            hideEventTypeDetails: false,
-            hideLandingPageDetails: false,
-            primaryColor: '00a2ff',
-            textColor: '4d5055',
-          }}
-        />
+        {/* CALENDARIO CONTENIDO */}
+        <div 
+          className="calendly-inline-widget h-[600px] w-full" 
+          data-url={`https://calendly.com/sinergiapspcoaching/30min?hide_event_type_details=1&hide_landing_page_details=1&a1=${encodeURIComponent(servicio)}`}
+        ></div>
+        
       </div>
     </main>
+  );
+}
+
+export default function ReservaPage() {
+  return (
+    <Suspense fallback={<div className="p-20 text-center">Cargando agenda...</div>}>
+      <ReservaContent />
+    </Suspense>
   );
 }
