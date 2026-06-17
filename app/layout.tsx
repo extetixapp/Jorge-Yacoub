@@ -1,5 +1,6 @@
 import { Inter, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
+import React from 'react';
 
 // Configuramos las dos fuentes que acordamos
 const inter = Inter({
@@ -20,7 +21,7 @@ export const metadata = {
   description: 'Especialista en Pie Diabético, Ortopedia y Podología Clínica.',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${inter.variable} ${cormorant.variable}`}>
       <body className="bg-white text-[#1B4D8F] antialiased">{children}</body>
