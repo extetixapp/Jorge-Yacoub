@@ -16,11 +16,11 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata = {
-  title: 'Pie Sano - Clínica Podológica Premium',
-  description: 'Especialista en Pie Diabético, Ortopedia y Podología Clínica.',
+  title: 'Jorge Yacoub Licenciado en podologia',
+  description: 'Diplomado en Pie Diabético, Ortopedia y Podología Clínica.',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${inter.variable} ${cormorant.variable}`}>
       {/* 
