@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 
 interface FaqItem {
@@ -31,16 +33,17 @@ export default function Faq() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-white border-t border-gray-100">
+    <section id="faq" className="py-24 bg-white border-t border-gris-fondo">
       <div className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-serif text-3xl font-light text-medicoAzul tracking-wide uppercase">
+          <h2 className="font-serif text-3xl font-light text-verde-oscuro tracking-wide uppercase">
             Preguntas Frecuentes
           </h2>
-          <div className="w-12 h-[1px] bg-medicoTeal mx-auto mt-3"></div>
+          {/* Línea decorativa verde claro */}
+          <div className="w-12 h-[1px] bg-verde-claro mx-auto mt-3"></div>
         </div>
 
-        <div className="border-t border-gray-200 divide-y divide-gray-200">
+        <div className="border-t border-gris-fondo divide-y divide-gris-fondo">
           {faqs.map((faq, idx) => {
             const estaAbierto = abiertoIdx === idx;
             return (
@@ -50,10 +53,10 @@ export default function Faq() {
                   onClick={() => toggleFaq(idx)}
                   className="w-full flex justify-between items-center text-left group"
                 >
-                  <span className="font-serif text-xl text-medicoAzul font-normal group-hover:text-medicoTeal transition-colors">
+                  <span className="font-serif text-xl text-verde-oscuro font-normal group-hover:text-verde-claro transition-colors">
                     {faq.pregunta}
                   </span>
-                  <span className="text-xl font-light text-medicoAzul ml-4">
+                  <span className="text-xl font-light text-verde-oscuro ml-4">
                     {estaAbierto ? '−' : '+'}
                   </span>
                 </button>
@@ -66,7 +69,7 @@ export default function Faq() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="text-sm text-gray-500 font-light leading-relaxed">
+                    <p className="text-sm text-gris-carbon font-light leading-relaxed">
                       {faq.respuesta}
                     </p>
                   </div>

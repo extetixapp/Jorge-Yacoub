@@ -1,6 +1,5 @@
 import { Inter, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
-import React from 'react';
 
 // Configuramos las dos fuentes que acordamos
 const inter = Inter({
@@ -21,10 +20,17 @@ export const metadata = {
   description: 'Especialista en Pie Diabético, Ortopedia y Podología Clínica.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }) {
   return (
     <html lang="es" className={`${inter.variable} ${cormorant.variable}`}>
-      <body className="bg-white text-[#1B4D8F] antialiased">{children}</body>
+      {/* 
+        Aplicamos:
+        bg-fondo-claro: El nuevo fondo neutro profesional
+        text-gris-carbon: El nuevo color de texto que reemplaza al azul anterior
+      */}
+      <body className="bg-[rgb(var(--background-start-rgb))] text-[#374151] antialiased">
+        {children}
+      </body>
     </html>
   );
 }

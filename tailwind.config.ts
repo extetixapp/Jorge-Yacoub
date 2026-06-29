@@ -12,12 +12,17 @@ module.exports = {
         sans: ['var(--font-inter)', 'sans-serif'],
       },
       colors: {
-        // Dejamos nuestra paleta médica premium grabada a fuego
-        medicoAzul: '#1B4D8F',
-        medicoTeal: '#5ACACF',
-        medicoGris: '#F2F4F7',
+        // Paleta de colores Pie Sano basada en el logo
+        verde: {
+          oscuro: '#2E7D56',
+          claro: '#4ADE80',
+        },
+        gris: {
+          carbon: '#374151',
+          fondo: '#F3F4F6',
+        },
       },
     },
   },
   plugins: [],
-};
+}

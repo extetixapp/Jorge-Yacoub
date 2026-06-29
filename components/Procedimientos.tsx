@@ -9,16 +9,16 @@ export default function Procedimientos() {
   ];
 
   return (
-    <section className="py-24 bg-gray-50 border-t border-gray-100">
+    <section className="py-24 bg-gris-fondo border-t border-white">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         
         {/* COLUMNA IZQUIERDA */}
         <div className="space-y-8">
           <div>
-            <h2 className="font-serif text-3xl font-light text-medicoAzul uppercase tracking-wide">
+            <h2 className="font-serif text-3xl font-light text-verde-oscuro uppercase tracking-wide">
               Procedimientos Quirúrgicos
             </h2>
-            <p className="text-medicoTeal text-xs uppercase tracking-[0.2em] mt-2">
+            <p className="text-verde-claro text-xs uppercase tracking-[0.2em] mt-2">
               A cargo de médico especialista
             </p>
           </div>
@@ -27,9 +27,10 @@ export default function Procedimientos() {
             {listaProcedimientos.map((procedimiento, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 text-gray-700 font-light"
+                className="flex items-center gap-3 text-gris-carbon font-light"
               >
-                <span className="w-1.5 h-1.5 bg-medicoAzul rounded-full"></span>
+                {/* Cambiamos el punto a verde-oscuro */}
+                <span className="w-1.5 h-1.5 bg-verde-oscuro rounded-full"></span>
                 {procedimiento}
               </div>
             ))}
@@ -37,17 +38,17 @@ export default function Procedimientos() {
 
           <Link
             href="/reserva?servicio=Evaluación Quirúrgica"
-            className="inline-block px-8 py-3 bg-medicoAzul text-white text-xs uppercase tracking-[0.2em] hover:bg-medicoAzul/90 transition-all text-center"
+            className="inline-block px-8 py-3 bg-verde-oscuro text-white text-xs uppercase tracking-[0.2em] hover:bg-verde-claro transition-all duration-300 text-center"
           >
             Solicitar evaluación médica
           </Link>
         </div>
 
-        {/* COLUMNA DERECHA - CORREGIDA */}
-        <div className="w-full aspect-[4/5] bg-medicoGris relative overflow-hidden group">
+        {/* COLUMNA DERECHA */}
+        <div className="w-full aspect-[4/5] bg-white relative overflow-hidden group">
           <img
-            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80"
-            alt="Clínica Podológica Premium"
+            src="/cirujia.jpeg"
+            alt="Cirujia de juanetes"
             className="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 transition-transform duration-1000 ease-out"
           />
         </div>
