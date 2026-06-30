@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link'; // <--- Importamos Link
 
 export default function Hero() {
   return (
@@ -22,12 +23,13 @@ export default function Hero() {
             restaurar el bienestar, la armonía y la salud de tus pasos.
           </p>
           <div className="pt-4 flex flex-col sm:flex-row gap-4">
-            <a
-              href="#calendario"
+            {/* Botón actualizado a Link hacia la página de reserva */}
+            <Link
+              href="/reserva?servicio=Consulta"
               className="bg-verde-oscuro text-white text-xs uppercase tracking-[0.2em] font-sans font-light px-8 py-4 text-center hover:bg-verde-claro transition-colors duration-300"
             >
               Agendar Turno Online
-            </a>
+            </Link>
             <a
               href="#servicios"
               className="border border-verde-oscuro text-verde-oscuro text-xs uppercase tracking-[0.2em] font-sans font-light px-8 py-4 text-center hover:bg-verde-oscuro hover:text-white transition-all duration-300"
