@@ -51,7 +51,7 @@ export default function Calendario({ servicioSeleccionado }: CalendarioProps) {
 
   const manejarReserva = (e: React.FormEvent) => {
     e.preventDefault();
-    const baseUrl = 'https://calendly.com/sinergiapspcoaching/30min';
+    const baseUrl = 'https://calendly.com/jorgeyacoub8/30min';
 
     const queryParams = new URLSearchParams({
       name: nombre,
