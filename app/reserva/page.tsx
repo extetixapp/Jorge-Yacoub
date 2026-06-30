@@ -49,7 +49,7 @@ function ReservaContent() {
         {/* CALENDARIO CONTENIDO */}
         <div 
           className="calendly-inline-widget h-[600px] w-full" 
-          data-url={`https://calendly.com/jorgeyacoub8/30min?hide_event_type_details=1&hide_landing_page_details=1&a1=${encodeURIComponent(servicio)}`}
+          data-url={`https://calendly.com/jorgeyacoub8/40min?hide_event_type_details=1&hide_landing_page_details=1&a1=${encodeURIComponent(servicio)}`}
         ></div>
         
       </div>
